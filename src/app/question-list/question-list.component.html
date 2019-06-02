@@ -1,0 +1,34 @@
+<div class="question-list">
+  <div
+    class="question"
+    *ngFor="let questionListItem of questionList; let i = index"
+    [ngClass]="{
+      'ng-invalid':
+        validate && questionListItem.givenAnswer === '' ? true : false
+    }"
+  >
+    <div class="question-box">
+      <div class="question-header">
+        {{ i + 1 }}. {{ questionListItem.question }}
+      </div>
+      <div class="options">
+        <select
+          (change)="
+            questionListItem.givenAnswer = $event.target.value; validate = false
+          "
+        >
+          <option value="">None</option>
+          <option
+            [value]="option"
+            *ngFor="let option of questionListItem.options"
+            >{{ option }}</option
+          >
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="btns">
+    <button (click)="onSubmit()">Submit</button>
+    <button (click)="onClear()">Clear</button>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: center;
+}
+.main {
+  display: flex;
+
+  div {
+    width: 50%;
+    padding: 0 1.5rem 0 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main {
+    flex-direction: column;
+
+    div {
+      width: 100%;
+    }
+  }
+}
